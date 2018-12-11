@@ -1,5 +1,6 @@
 package com.booksworld.adminconsumer.controller;
 
+import com.booksworld.util.AjaxResult;
 import com.booksworld.util.StringUtil;
 import groovy.util.logging.Slf4j;
 import org.slf4j.Logger;
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,15 +34,29 @@ public class IndexController {
         return new ModelAndView("index");
     }
 
-    @RequestMapping("login")
-    public ModelAndView loginView(HttpServletRequest request,
+    @ResponseBody
+    @RequestMapping(value = "login")
+    public AjaxResult loginView(HttpServletRequest request,
                                   @RequestParam(name = "username")String username,
                                   @RequestParam(name = "password")String password) {
+        AjaxResult result = new AjaxResult();
+        LOG.error("来了");
         String accountPass = LOGINACCOUNT.get(username);
         if (!StringUtil.isEmpty(accountPass) && accountPass.equals(password)) {
             request.getSession().setAttribute("loginUser", username);
-            return new ModelAndView("redirect:/main");
+            result.setSuccess(true);
         }
-        return new ModelAndView("redirect:/index");
+        return result;
+    }
+
+    @RequestMapping("main")
+    public String mian() {
+        return "main";
+    }
+
+    @RequestMapping("out")
+    public String out(HttpServletRequest request) {
+        request.getSession().removeAttribute("loginUser");
+        return "redirect:index";
     }
 }

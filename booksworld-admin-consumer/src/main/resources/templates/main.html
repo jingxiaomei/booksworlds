@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>后台管理</title>
+    <link href="/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/static/js/jquery-3.1.2.min.js"></script>
+    <script src="/static/lib/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand " href="/main">后台管理系统</a>
+                    </div>
+                    <div id="navbar" class="navbar-right">
+                        <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" th:text="${session.loginUser}"><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">功能</a></li>
+                            <li><a href="#">另一个功能</a></li>
+                            <li><a href="/main">切换账号</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/main">退出</a></li>
+                        </ul>
+                    </div>
 
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 45px">
+        <div class="col-md-3">
+            <div class="list-group">
+                <!--激活，作为标题-->
+                <a href="#" class="list-group-item active ">
+                    系统菜单
+                </a>
+                <a href="#" class="list-group-item">图书管理</a>
+
+                <a href="#" class="list-group-item">人员管理</a>
+                <a href="#" class="list-group-item">管理三</a>
+                <a href="#" class="list-group-item">管理四</a>
+                <a href="#" class="list-group-item">退出</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div>
+                <ol class="breadcrumb">
+                    <li><span class="glyphicon glyphicon-home"></span>&nbsp;
+                        <a href="/main">主页</a>
+                    </li>
+                    <li class="active"></li>
+                </ol>
+            </div>
+            <div align="center" style="padding-top: 50px;">
+                <h1>后台管理系统</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div align="center" style="padding-top: 200px">
+                Copyright © 2018-2019 larger5
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+<link  href="/static/lib/toastr/build/toastr.css" rel="stylesheet" />
+<script src="/static/lib/toastr/build/toastr.min.js"></script>

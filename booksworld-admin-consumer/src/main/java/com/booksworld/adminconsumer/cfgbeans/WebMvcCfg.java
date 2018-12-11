@@ -23,7 +23,7 @@ public class WebMvcCfg extends WebMvcConfigurerAdapter {
         // excludePathPatterns 用户排除拦截
         // 映射为 user 的控制器下的所有映射
         //registry.addInterceptor(loginInterceptor).addPathPatterns("/login/home").excludePathPatterns("/index", "/");
-        registry.addInterceptor(loginInterceptor).excludePathPatterns("/index", "/").excludePathPatterns("/static","/");
+        registry.addInterceptor(loginInterceptor).excludePathPatterns("/index", "/").excludePathPatterns("/static","/").excludePathPatterns("/login","/");
         super.addInterceptors(registry);
     }
 }

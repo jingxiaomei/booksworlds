@@ -7,5 +7,7 @@ spring:
     view:
       prefix: /resources/static/
       suffix: .html
+  resources:
+    static-locations: classpath:/templates/
 server:
   port: 82
